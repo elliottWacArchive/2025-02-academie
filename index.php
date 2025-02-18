@@ -5,6 +5,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="frontend/css/normalize.css">
     <link rel="stylesheet" href="frontend/css/skeleton.css">
+    <link rel="stylesheet" href="frontend/css/style.css">
+    <link rel="stylesheet" href="frontend/css/fonts.css">
     <!--
     Ici doivent être ajouté les script / style génériques.
     Si un script est utilisé sur toutes les view (ex. Cookie car la gestion des cookies est necessaire partout),
