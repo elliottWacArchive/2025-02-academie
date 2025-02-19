@@ -32,6 +32,58 @@ class UserModel {
             throw error;
         }
     }
+
+    static async verifyPassword(username, password) {
+        try {
+            const user = await prisma.users.findFirst({
+                where: { username: username }
+            });
+
+            if (!user) {
+                throw new Error("User not found");
+            }
+
+            const hashedPassword = crypto.createHmac("ripemd160", SALT).update(password).digest("hex");
+
+            if (user.password === hashedPassword) {
+                return true;
+            } else {
+                return false;
+            }
+        } catch (error) {
+            console.error("Erreur lors de la vérification du mot de passe : ", error);
+            throw error;
+        }
+    }
+
+    static async getToken(username) {
+        const user = await prisma.users.findFirst({
+            where: { username: username }
+        });
+        return user.token;
+    }
+
+    static async editUser(token, param, value) {
+        try {
+            const user = await prisma.users.findUnique({
+                where: { token: token }
+            });
+
+            if (!user) {
+                throw new Error("User not found");
+            }
+
+            const updatedUser = await prisma.users.update({
+                where: { token: token },
+                data: { [param]: value }
+            });
+
+            return updatedUser;
+        } catch (error) {
+            console.error("Erreur lors de la modification de l'utilisateur : ", error);
+            throw error;
+        }
+    }
 }
 
 
