@@ -18,5 +18,6 @@ document.querySelector("form").addEventListener("submit", async (e) => {
     alert(result.message || result.error);
     if (result.token != false) {
         CookieModel.addCookie("token", result.token);
+        window.location.href = "/";
     }
 });

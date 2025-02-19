@@ -19,6 +19,14 @@ h1, h2, h3, h4, h5, h6 {
     font-weight: normal;
 }
 
+.logo-container {
+    align-items: center;
+}
+
+.logo {
+    height: 5rem;
+}
+
 input[type='email'], input[type='text'], input[type='date'], input[type='password'] {
     background-color: var(--primary-color);
 }

@@ -63,6 +63,18 @@ class UserModel {
         return user.token;
     }
 
+    static async isToken(token) {
+        const user = await prisma.users.findFirst({
+            where: { token: token }
+        });
+
+        if (!user) {
+            return false;
+        }
+
+        return true;
+    }
+
     static async editUser(token, param, value) {
         try {
             const user = await prisma.users.findUnique({
