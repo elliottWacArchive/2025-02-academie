@@ -1,7 +1,8 @@
 const { PrismaClient } = require("@prisma/client");
 const prisma = new PrismaClient();
 const crypto = require("crypto");
-const SALT = "vive le projet tweet_academy";
+require('dotenv').config(); // peut ne pas marcher
+const SALT = process.env.SALT;
 
 class UserModel {
     static async createUser(username, email, password, birthdate) {
@@ -93,6 +94,27 @@ class UserModel {
             return updatedUser;
         } catch (error) {
             console.error("Erreur lors de la modification de l'utilisateur : ", error);
+            throw error;
+        }
+    }
+
+    static async getUser(token, param) {
+        try {
+            const user = await prisma.users.findFirst({
+                where: { token: token }
+            });
+
+            if (!user) {
+                throw new Error("Utilisateur non trouvé");
+            }
+
+            if (!user[param]) {
+                throw new Error("Paramètre non trouvé");
+            }
+
+            return user[param];
+        } catch (error) {
+            console.error("Erreur lors de la récupération de l'utilisateur : ", error);
             throw error;
         }
     }
