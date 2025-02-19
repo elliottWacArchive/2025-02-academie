@@ -45,6 +45,20 @@ const UserController = {
         } catch (error) {
             res.status(500).json({ error: "Erreur serveur", details: error.message, token: false });
         }
+    },
+
+    async isToken(req, res) {
+        try {
+            const isToken = await UserModel.isToken(token);
+            if (isToken == false) {
+                res.status(401).json({ message: "Token invalide.", token: false });
+            } else {
+                res.status(202).json({ message: "Token valide.", token: true });
+            }
+        } catch (error) {
+            console.error("Erreur lors de la vérification du token : ", error);
+            throw error;
+        }
     }
 };
 
