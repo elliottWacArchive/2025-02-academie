@@ -10,6 +10,14 @@ const app = express();
 app.use(cors());
 app.use(express.json());
 
+app.use(async (err, req, res, next) => {
+    console.error(err); // Log de l'erreur dans la console
+    if (err instanceof Prisma.PrismaClientKnownRequestError) {
+        return res.status(400).json({ error: "Erreur Prisma", details: err.message });
+    }
+    return res.status(500).json({ error: "Erreur serveur interne", details: err.message });
+});
+
 // Routes
 app.use("/users", userRoutes);
 // app.get("/", (req, res) => {
