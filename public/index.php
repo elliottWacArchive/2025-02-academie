@@ -25,7 +25,7 @@ switch ($request) {
         require __DIR__ . '/view/home.php';
         break;
     case '/login':
-        require __DIR__ . '/view/login.php';
+        require __DIR__ . '/view/signin.php';
         break;
     case '/inscription':
         require __DIR__ . '/view/signup.php';

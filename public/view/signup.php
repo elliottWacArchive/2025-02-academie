@@ -1,3 +1,6 @@
+<head>
+    <title>Inscription</title>
+</head>
 <body>
     <div class="main flex fcolumn">
         <h1>Abilifeed</h1>
