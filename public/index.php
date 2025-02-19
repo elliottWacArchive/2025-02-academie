@@ -7,6 +7,7 @@
     <link rel="stylesheet" href="css/skeleton.css">
     <link rel="stylesheet" href="css/style.css">
     <link rel="stylesheet" href="css/fonts.css">
+    <link rel="icon" href="image/logo.png" type="image/x-icon">
     <!--
     Ici doivent être ajouté les script / style génériques.
     Si un script est utilisé sur toutes les view (ex. Cookie car la gestion des cookies est necessaire partout),
@@ -19,7 +20,7 @@ $request = $_SERVER['REQUEST_URI'];
 
 switch ($request) {
     case '/':
-        require __DIR__ . '/view/login.php';
+        require __DIR__ . '/view/signin.php';
         break;
     case '/home':
         require __DIR__ . '/view/home.php';
@@ -27,7 +28,16 @@ switch ($request) {
     case '/login':
         require __DIR__ . '/view/signin.php';
         break;
+    case '/signin':
+        require __DIR__ . '/view/signin.php';
+        break;
+    case '/connexion':
+        require __DIR__ . '/view/signin.php';
+        break;
     case '/inscription':
+        require __DIR__ . '/view/signup.php';
+        break;
+    case '/signup':
         require __DIR__ . '/view/signup.php';
         break;
     case '/settings':
