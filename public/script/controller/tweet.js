@@ -1,23 +1,26 @@
+import CookieModel from "../model/cookie.js";
 
-let tweet_container = document.getElementById("tweet-container");
-let tweet_close = document.getElementById("close-tweet");
-tweet_container.addEventListener("click", async (e) => {
-    function closeTweet() {
-    $('#tweet-container').hide();
-}
-closeTweet();
+const tweet_container = document.getElementById("tweet-container");
+const tweet_close = document.getElementById("close-tweet");
+const tweet_send = document.getElementById("publish-tweet");
+
+tweet_close.addEventListener("click", () => {
+    tweet_container.style.display = "none";
 });
 
-tweet_send.addEventListener("click", async (e) => {
-    e.preventDefault();
-    let tweet_text = document.getElementById("text-tweet").value;
-    const response = await fetch("http://localhost:3000/tweets", {
+tweet_send.addEventListener("click", async () => {
+    const tweet_text = document.getElementById("text-tweet").innerText;
+    if (tweet_text.length < 1) {
+        alert("Tweet cannot be empty");
+        return;
+    }
+    console.log(tweet_text);
+    const response = await fetch("http://localhost:3000/tweets/createTweet", {
         method: "POST",
         headers: {
             "Content-Type": "application/json",
-            "Authorization": "Bearer " + CookieModel.getCookie("token"),
         },
-        body: JSON.stringify({ tweet_text }),
+        body: JSON.stringify({ tweet_text, token: CookieModel.getCookie("token") }),
     });
 
     const result = await response.json();
@@ -26,6 +29,4 @@ tweet_send.addEventListener("click", async (e) => {
         window.location.href = "/";
     }
 });
-
-let tweet_send = document.getElementById("publish-tweet");
 

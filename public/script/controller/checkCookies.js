@@ -12,11 +12,10 @@ document.addEventListener("DOMContentLoaded", async () => {
         });
     
         const result = await response.json();
-        alert(result.message || result.error);
         if (result.token == true) {
-            window.location.href = "/";
+            return;
         } else {
-            CookieModel.removeCookie("token");
+            CookieModel.deleteCookie("token");
             window.location.href = "/signin";
         }
     } else {

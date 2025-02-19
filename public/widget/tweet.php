@@ -12,3 +12,4 @@
         </div>
     </div>
 </div>
+<script type="module" src="script/controller/tweet.js"></script>

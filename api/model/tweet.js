@@ -1,26 +1,19 @@
 const { PrismaClient } = require("@prisma/client");
 const prisma = new PrismaClient();
-const UserModel = require("user");
+const UserModel = require("./user");
 
 
 class TweetModel {
-    static async createTweet(token, head, tweet_text, link, retweet = 0) {
+    static async createTweet(tweet_text, token) {
         try {
-            const user = UserModel.getUser(token, id);
-            const log = await prisma.users.findUnique({
-                where: { id: user }
-            });
-
-            if (!log) {
-                throw new Error("User not found");
-            }
-
+            const user = await UserModel.getUser(token, "id");
+            const retweet = 0;
             return await prisma.tweets.create({
                 data: {
                     user_id: user,
-                    head: head,
-                    text: tweet_text,
-                    link: link,
+                    head: 0,
+                    body: tweet_text,
+                    link: "",
                     retweet: retweet
                 }
             });

@@ -1,7 +1,7 @@
 const { PrismaClient } = require("@prisma/client");
 const prisma = new PrismaClient();
 const crypto = require("crypto");
-require('dotenv').config(); // peut ne pas marcher
+require('dotenv').config();
 const SALT = process.env.SALT;
 
 class UserModel {

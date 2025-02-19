@@ -49,9 +49,10 @@ const UserController = {
 
     async isToken(req, res) {
         try {
+            const { token } = req.body;
             const isToken = await UserModel.isToken(token);
             if (isToken == false) {
-                res.status(401).json({ message: "Token invalide.", token: false });
+                res.status(401).json({ error: "Token invalide.", token: false });
             } else {
                 res.status(202).json({ message: "Token valide.", token: true });
             }
