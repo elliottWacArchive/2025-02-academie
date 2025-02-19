@@ -1,0 +1,68 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "mysql"
+  url      = env("DATABASE_URL")
+}
+
+model conversation {
+  id    Int @id @default(autoincrement())
+  user1 Int
+  user2 Int
+}
+
+model follows {
+  id           Int @id @default(autoincrement())
+  following_id Int
+  followed_id  Int
+}
+
+model hashtag {
+  id   Int    @id @default(autoincrement())
+  name String @db.VarChar(140)
+}
+
+model hashtag_tweet {
+  id         Int @id @default(autoincrement())
+  hashtag_id Int
+  tweet_id   Int
+}
+
+model message {
+  id           Int    @id @default(autoincrement())
+  conversation Int
+  sender       Int
+  content      String @db.VarChar(255)
+}
+
+model retweet {
+  id       Int @id @default(autoincrement())
+  user_id  Int
+  tweet_id Int
+}
+
+model tweets {
+  id         Int      @id @default(autoincrement())
+  user_id    Int
+  head       Int
+  body       String   @db.VarChar(140)
+  link       String   @db.VarChar(255)
+  retweet    Int
+  created_at DateTime @db.Timestamp(0)
+}
+
+model users {
+  id          Int       @id @default(autoincrement())
+  username    String?   @db.VarChar(255)
+  email       String?   @db.VarChar(255)
+  password    String?   @db.VarChar(255)
+  birthdate   DateTime? @db.Date
+  pp          String?   @db.VarChar(255)
+  bio         String?   @db.VarChar(255)
+  token       String?   @db.VarChar(255)
+  role        Int?
+  modified_at DateTime? @db.Timestamp(0)
+  created_at  DateTime? @db.Timestamp(0)
+}

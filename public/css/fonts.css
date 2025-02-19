@@ -1,0 +1,53 @@
+@font-face {
+    font-family: 'Hypik';
+    src: url('../fonts/hypik.otf');
+}
+
+@font-face {
+    font-family: 'Platinum Sign';
+    src: url('../fonts/Platinum\ Sign.ttf');
+}
+
+@font-face {
+    font-family: 'AtemicaSans';
+    src: url('../fonts/AtemicaSans_PERSONAL_USE_ONLY.otf');
+}
+
+@font-face {
+    font-family: 'AtemicaSansItalic';
+    src: url('../fonts/AtemicaSansItalic_PERSONAL_USE_ONLY.otf');
+}
+
+@font-face {
+    font-family: 'Heavitas';
+    src: url('../fonts/Heavitas.ttf');
+}
+
+@font-face {
+    font-family: 'Tommy Light';
+    src: url('../fonts/MADE\ TOMMY\ Light_PERSONAL\ USE.otf');
+}
+
+@font-face {
+    font-family: 'Tommy Medium';
+    src: url('../fonts/MADE\ TOMMY\ Medium_PERSONAL\ USE.otf');
+}
+
+@font-face {
+    font-family: 'Tommy Regular';
+    src: url('../fonts/MADE\ TOMMY\ Regular_PERSONAL\ USE.otf');
+}
+
+@font-face {
+    font-family: 'Tommy Bold';
+    src: url('../fonts/MADE\ TOMMY\ Bold_PERSONAL\ USE.otf');
+}
+
+@font-face {
+    font-family: 'Tommy Black';
+    src: url('../fonts/MADE\ TOMMY\ Black_PERSONAL\ USE.otf');
+}
+
+h1 {
+    font-family: 'Tommy Black';
+}

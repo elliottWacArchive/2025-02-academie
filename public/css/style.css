@@ -1,0 +1,49 @@
+:root {
+    --primary-color: #2e2f3e;
+    --text-color: #fff;
+    --border-color: #33569c;
+}
+
+/* BASIS */
+
+body {
+    background-color: var(--primary-color);
+    color: var(--text-color);
+    width: 100vw;
+    min-height: 100vh;
+    overflow-x: hidden;
+}
+
+h1, h2, h3, h4, h5, h6 {
+    margin: 0;
+    font-weight: normal;
+}
+
+.logo-container {
+    align-items: center;
+}
+
+.logo {
+    height: 5rem;
+}
+
+input[type='email'], input[type='text'], input[type='date'], input[type='password'] {
+    background-color: var(--primary-color);
+}
+
+/* CLASSES ELEMENTS */
+
+.flex {
+    display: flex;
+}
+
+.fcolumn {
+    flex-direction: column;
+}
+
+.main {
+    width: 100%;
+    height: 100%;
+    align-items: center;
+    justify-content: center;
+}
