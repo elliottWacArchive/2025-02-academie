@@ -13,4 +13,4 @@
         </form>
     </div>
 </body>
-<script src="public/script/controller/signup.js"></script>
+<script src="script/controller/signup.js"></script>
