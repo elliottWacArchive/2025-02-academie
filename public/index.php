@@ -46,6 +46,9 @@ switch ($request) {
     case '/messages':
         require __DIR__ . '/view/messages.php';
         break;
+    case '/anto':
+        require __DIR__ . '/view/bin.php';
+        break;
     default:
         require __DIR__ . '/view/404.php';
         break;
