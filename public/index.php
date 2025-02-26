@@ -3,8 +3,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="css/normalize.css">
-    <link rel="stylesheet" href="css/skeleton.css">
+    <!-- <link rel="stylesheet" href="css/normalize.css"> -->
+    <!-- <link rel="stylesheet" href="css/skeleton.css"> -->
+    <link rel="stylesheet" href="css/digestion/digestion.css">
     <link rel="stylesheet" href="css/style.css">
     <link rel="stylesheet" href="css/fonts.css">
     <link rel="icon" href="image/logo.png" type="image/x-icon">
@@ -17,8 +18,10 @@
 <?php
 
 $request = $_SERVER['REQUEST_URI'];
+$parsed_url = parse_url($request);
+$path = $parsed_url['path'];
 
-switch ($request) {
+switch ($parsed_url['path']) {
     case '/':
         require __DIR__ . '/view/home.php';
         break;
@@ -26,17 +29,11 @@ switch ($request) {
         require __DIR__ . '/view/home.php';
         break;
     case '/login':
-        require __DIR__ . '/view/signin.php';
-        break;
     case '/signin':
-        require __DIR__ . '/view/signin.php';
-        break;
     case '/connexion':
         require __DIR__ . '/view/signin.php';
         break;
     case '/inscription':
-        require __DIR__ . '/view/signup.php';
-        break;
     case '/signup':
         require __DIR__ . '/view/signup.php';
         break;
@@ -48,6 +45,12 @@ switch ($request) {
         break;
     case '/anto':
         require __DIR__ . '/view/bin.php';
+    case '/user':
+        if (isset($_GET['id'])) {
+            require __DIR__ . '/view/user.php';
+        } else {
+            require __DIR__ . '/view/404.php';
+        }
         break;
     default:
         require __DIR__ . '/view/404.php';

@@ -22,7 +22,7 @@ class TweetModel {
             console.error("Erreur lors de la création du tweet : ", error);
             throw error;
         }
-}
+    }
 }
 
 
