@@ -18,8 +18,10 @@
 <?php
 
 $request = $_SERVER['REQUEST_URI'];
+$parsed_url = parse_url($request);
+$path = $parsed_url['path'];
 
-switch ($request) {
+switch ($parsed_url['path']) {
     case '/':
         require __DIR__ . '/view/home.php';
         break;
@@ -27,17 +29,11 @@ switch ($request) {
         require __DIR__ . '/view/home.php';
         break;
     case '/login':
-        require __DIR__ . '/view/signin.php';
-        break;
     case '/signin':
-        require __DIR__ . '/view/signin.php';
-        break;
     case '/connexion':
         require __DIR__ . '/view/signin.php';
         break;
     case '/inscription':
-        require __DIR__ . '/view/signup.php';
-        break;
     case '/signup':
         require __DIR__ . '/view/signup.php';
         break;
@@ -46,6 +42,13 @@ switch ($request) {
         break;
     case '/messages':
         require __DIR__ . '/view/messages.php';
+        break;
+    case '/user':
+        if (isset($_GET['id'])) {
+            require __DIR__ . '/view/user.php';
+        } else {
+            require __DIR__ . '/view/404.php';
+        }
         break;
     default:
         require __DIR__ . '/view/404.php';
