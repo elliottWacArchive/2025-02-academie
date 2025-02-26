@@ -85,6 +85,8 @@ input, .submit-button {
 }
 
 #ball img {
+    user-select: none;
+    pointer-events: none;
     background-color: var(--blue-color);
     filter: none;
     max-width: 60%;
