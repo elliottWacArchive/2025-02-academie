@@ -12,7 +12,15 @@ const UserController = {
             res.status(201).json({ message: "Utilisateur créé avec succès !", user: newUser });
         } catch (error) {
             res.status(500).json({ error: "Erreur serveur", details: error.message });
-            console.log(error);
+        }
+    },
+    async getUser(req, res) {
+        try {
+            const { token, param } = req.body;
+            const newUser = await UserModel.getUser(token, param);
+            res.status(201).json({ message: "Utilisateur trouvé avec succès !", user: newUser });
+        } catch (error) {
+            res.status(500).json({ error: "Erreur serveur", details: error.message });
         }
     },
 

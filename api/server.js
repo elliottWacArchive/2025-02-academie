@@ -22,6 +22,7 @@ app.use(async (err, req, res, next) => {
 // Routes
 app.use("/users", userRoutes);
 app.use("/tweets", tweetRoutes);
+app.use('/storage', express.static('storage'));
 
 const PORT = 3000;
 app.listen(PORT, () => {
