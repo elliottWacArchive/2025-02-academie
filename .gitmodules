@@ -1,0 +1,3 @@
+[submodule "public/css/digestion"]
+	path = public/css/digestion
+	url = https://github.com/gloubiboulgaah/digestion
