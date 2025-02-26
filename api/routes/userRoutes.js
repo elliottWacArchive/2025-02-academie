@@ -7,5 +7,6 @@ router.post("/register", UserController.register);
 router.post("/login", UserController.login);
 router.post("/isToken", UserController.isToken);
 router.post("/getUser", UserController.getUser);
+router.post("/loadProfile", UserController.loadProfile);
 
 module.exports = router;

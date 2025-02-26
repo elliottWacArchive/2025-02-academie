@@ -118,6 +118,23 @@ class UserModel {
             throw error;
         }
     }
+
+    static async loadProfile(id) {
+        try {
+            const user = await prisma.users.findFirst({
+                where: { id: id }
+            });
+
+            if (!user) {
+                return {user: false};
+            }
+
+            return user;
+        } catch (error) {
+            console.error("Erreur lors du chargement du profil : ", error);
+            throw error;
+        }
+    }
 }
 
 

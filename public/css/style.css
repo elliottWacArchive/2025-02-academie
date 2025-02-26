@@ -67,6 +67,43 @@ input, .submit-button {
     background-color: var(--blue-color);
 }
 
+#ball {
+    cursor: pointer;
+    display: block;
+    width: 100px;
+    height: 100px;
+    position: absolute;
+    border-radius: 50%;
+    overflow: hidden;
+}
+
+#ball:hover {
+    img {
+        animation-play-state: paused;
+        filter: grayscale(100%);
+    }
+}
+
+#ball img {
+    background-color: var(--blue-color);
+    filter: none;
+    max-width: 60%;
+    padding: 20%;
+    animation-name: spin;
+    animation-duration: 5000ms;
+    animation-iteration-count: infinite;
+    animation-timing-function: linear;
+}
+
+@keyframes spin {
+    from {
+        transform: rotate(0deg);
+    }
+    to {
+        transform: rotate(360deg);
+    }
+}
+
 .profile {
     display: flex;
     flex-direction: column;
@@ -133,6 +170,8 @@ input, .submit-button {
 #text-tweet {
     width: calc(100% - 1rem);
     height: calc(100% - 1rem);
+    word-wrap: break-word;
+    white-space: pre-wrap;
     outline: none;
     background-color: #5a8ae9;
     border: none;

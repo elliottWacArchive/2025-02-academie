@@ -20,4 +20,7 @@
             <?php include 'widget/tweet.php' ?>
         </div>
     </div>
+    <div id="ball">
+        <img src="image/image.png" alt="">
+    </div>
 </body>
