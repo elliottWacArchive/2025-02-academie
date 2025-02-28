@@ -5,10 +5,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <!-- <link rel="stylesheet" href="css/normalize.css"> -->
     <!-- <link rel="stylesheet" href="css/skeleton.css"> -->
-    <link rel="stylesheet" href="css/digestion/digestion.css">
-    <link rel="stylesheet" href="css/style.css">
-    <link rel="stylesheet" href="css/fonts.css">
-    <link rel="icon" href="image/logo.png" type="image/x-icon">
+    <link rel="stylesheet" href="/css/digestion/digestion.css">
+    <link rel="stylesheet" href="/css/style.css">
+    <link rel="stylesheet" href="/css/fonts.css">
+    <link rel="icon" href="/image/logo.png" type="image/x-icon">
     <!--
     Ici doivent être ajouté les script / style génériques.
     Si un script est utilisé sur toutes les view (ex. Cookie car la gestion des cookies est necessaire partout),
@@ -21,7 +21,7 @@ $request = $_SERVER['REQUEST_URI'];
 $parsed_url = parse_url($request);
 $path = $parsed_url['path'];
 
-switch ($parsed_url['path']) {
+switch ($path) {
     case '/':
         require __DIR__ . '/view/home.php';
         break;
@@ -43,12 +43,9 @@ switch ($parsed_url['path']) {
     case '/messages':
         require __DIR__ . '/view/messages.php';
         break;
-    case '/user':
-        if (isset($_GET['id'])) {
-            require __DIR__ . '/view/user.php';
-        } else {
-            require __DIR__ . '/view/404.php';
-        }
+    case (preg_match('/^\/user\/([0-9]+)$/', $path, $matches) ? true : false):
+        $_GET['id'] = $matches[1];
+        require __DIR__ . '/view/user.php';
         break;
     default:
         require __DIR__ . '/view/404.php';
