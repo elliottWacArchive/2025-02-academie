@@ -9,6 +9,7 @@
     <link rel="stylesheet" href="/css/style.css">
     <link rel="stylesheet" href="/css/fonts.css">
     <link rel="icon" href="/image/logo.png" type="image/x-icon">
+    <script type="module" src="/script/controller/checkCookies.js"></script>
     <!--
     Ici doivent être ajouté les script / style génériques.
     Si un script est utilisé sur toutes les view (ex. Cookie car la gestion des cookies est necessaire partout),
@@ -37,6 +38,7 @@ switch ($path) {
     case '/signup':
         require __DIR__ . '/view/signup.php';
         break;
+    case '/parameters':
     case '/settings':
         require __DIR__ . '/view/settings.php';
         break;

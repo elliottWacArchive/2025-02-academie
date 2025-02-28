@@ -5,6 +5,7 @@ const router = express.Router();
 
 router.post("/register", UserController.register);
 router.post("/login", UserController.login);
+router.post("/edit", UserController.editUser);
 router.post("/isToken", UserController.isToken);
 router.post("/getUser", UserController.getUser);
 router.post("/loadProfile", UserController.loadProfile);
