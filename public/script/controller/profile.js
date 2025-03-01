@@ -9,6 +9,6 @@ async function loadProfile(id) {
     const result = await response.json();
     console.log(result);
     document.querySelector('.username').textContent = result.user.username;
-    document.querySelector('pp').src = result.user.pp;
+    document.querySelector('.pp').src = 'http://localhost:3000/storage/pp/' + result.user.pp;
     document.querySelector('.bio').textContent = result.user.bio;
 }

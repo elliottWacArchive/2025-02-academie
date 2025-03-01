@@ -85,6 +85,8 @@ input, .submit-button {
 }
 
 #ball img {
+    user-select: none;
+    pointer-events: none;
     background-color: var(--blue-color);
     filter: none;
     max-width: 60%;
@@ -101,6 +103,87 @@ input, .submit-button {
     }
     to {
         transform: rotate(360deg);
+    }
+}
+
+.profil-container {
+    width: 100%;
+    display: flex;
+    gap: 5px;
+}
+
+.user-block {
+    /* padding-left: 20%; */
+    color: black;
+    font-family: 'Helvetica';
+    display: flex;
+    align-items: flex-start;
+    flex-direction: column;
+    border-radius: 20px;
+    width: 60%;
+    aspect-ratio: 16/9;
+    background-image: url('../image/xanax-template.png');
+    background-position: center;
+    background-size: cover;
+}
+
+.user-block .username {
+    font-size: 4vw;
+    font-weight: bold;
+    width: fit-content;
+    transform: translate(13vw, 7vw);
+}
+
+.user-block .pp {
+    width: 10%;
+    aspect-ratio: 1/1;
+    transform: translate(37vw, -3vw);
+}
+
+.user-block .dosage {
+    color: #d92294;
+    font-size: 2vw;
+    transform: translate(13vw, 2vw);
+}
+
+.user-block .bio {
+    font-size: 2vw;
+    transform: translate(13vw, 6vw);
+}
+
+.user-block .pills {
+    font-size: 1vw;
+    transform: translate(13vw, 6vw);
+}
+
+@media (max-width: 768px) {
+    .user-block {
+        width: 100%;
+        aspect-ratio: 16/9;
+    }
+
+    .user-block .username {
+        font-size: 8vw;
+        transform: translate(23vw, 13vw);
+    }
+
+    .user-block .pp {
+        transform: translate(68vw, -6vw);
+    }
+
+    .user-block .dosage {
+        font-size: 4vw;
+        transform: translate(23vw, 3.5vw);
+    }
+
+    .user-block .bio {
+        font-size: 4vw;
+        transform: translate(23vw, 11vw);
+    }
+    
+    .user-block .pills {
+        font-size: 2vw;
+        transform: translate(23vw, 11vw);
     }
 }
 

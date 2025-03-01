@@ -8,7 +8,7 @@
         <div class="block-lg-2-10-column block-md-10-2 block-sm-10-2 secondary">
             <div class="block-lg-10-3 block-md-3-10 block-sm-3-10 dark center">
                 <div class="profile">
-                    <img class="pp" src="http://localhost:3000/storage/pp/default.png" alt="">
+                    <img class="pp" src="http://localhost:3000/storage/pp/default.jpg" alt="">
                     <div class="username"></div>
                 </div>
             </div>
