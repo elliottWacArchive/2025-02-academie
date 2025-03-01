@@ -1,6 +1,15 @@
 const UserModel = require("../model/user");
+const fs = require("fs");
+const path = require("path");
+const sharp = require("sharp");
+const multer = require("multer");
+
+const storage = multer.memoryStorage();
+const upload = multer({ storage: storage });
 
 const UserController = {
+    uploadMiddleware: upload.single("pp"),
+
     async register(req, res) {
         try {
             const { username, email, password, birthdate } = req.body;
@@ -14,6 +23,7 @@ const UserController = {
             res.status(500).json({ error: "Erreur serveur", details: error.message });
         }
     },
+
     async getUser(req, res) {
         try {
             const { token, param } = req.body;
@@ -69,6 +79,7 @@ const UserController = {
             throw error;
         }
     },
+
     async loadProfile(req, res) {
         try {
             const { id } = req.body;
@@ -77,6 +88,44 @@ const UserController = {
                 return res.status(404).json({ error: "Utilisateur non trouvé." });
             } else {
                 res.status(200).json({ user });
+            }
+        } catch (error) {
+            res.status(500).json({ error: "Erreur serveur", details: error.message });
+        }
+    },
+
+    async setPp(req, res) {
+        try {
+            const { token } = req.body;
+            if (!token) {
+                return res.status(400).json({ error: "Token requis." });
+            }
+
+            const user = await UserModel.getUser(token, "id");
+            if (!user) {
+                return res.status(404).json({ error: "Utilisateur non trouvé." });
+            }
+
+            if (!req.file) {
+                return res.status(400).json({ error: "Aucune image envoyée." });
+            }
+
+            const uploadDir = path.join(__dirname, "../storage/pp");
+            const fileName = `${user}.png`;
+            const filePath = path.join(uploadDir, fileName);
+
+            if (!fs.existsSync(uploadDir)) {
+                fs.mkdirSync(uploadDir, { recursive: true });
+            }
+
+            await sharp(req.file.buffer)
+                .resize(255, 255)
+                .png()
+                .toFile(filePath);
+
+            if (fs.existsSync(filePath)) {
+                await UserModel.editUser(token, 'pp', `${fileName}`);
+                res.status(200).json({ message: "Photo de profil mise à jour !", path: `/storage/pp/${fileName}` });
             }
         } catch (error) {
             res.status(500).json({ error: "Erreur serveur", details: error.message });
