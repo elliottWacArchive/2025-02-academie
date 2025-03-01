@@ -45,6 +45,7 @@ switch ($parsed_url['path']) {
         break;
     case '/anto':
         require __DIR__ . '/view/bin.php';
+        break;
     case '/user':
         if (isset($_GET['id'])) {
             require __DIR__ . '/view/user.php';
