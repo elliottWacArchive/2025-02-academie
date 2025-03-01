@@ -23,6 +23,28 @@ class TweetModel {
             throw error;
         }
     }
+    static async getTweet(id) {
+        try {
+            return await prisma.tweets.findUnique({
+                where: {
+                    id: id
+                }
+            });
+        }
+        catch (error) {
+            console.error("Erreur lors de la récupération du tweet : ", error);
+            throw error;
+        }
+    }
+    static async getTweets() {
+        try {
+            return await prisma.tweets.findMany();
+        }
+        catch (error) {
+            console.error("Erreur lors de la récupération des tweets : ", error);
+            throw error;
+        }
+    }
 }
 
 
