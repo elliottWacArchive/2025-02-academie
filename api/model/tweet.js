@@ -38,7 +38,13 @@ class TweetModel {
     }
     static async getTweets() {
         try {
-            return await prisma.tweets.findMany();
+            return await prisma.tweets.findMany({
+                include: {
+                    user: { 
+                        select: { username: true } 
+                    }
+                }
+            });
         }
         catch (error) {
             console.error("Erreur lors de la récupération des tweets : ", error);

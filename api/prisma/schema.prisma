@@ -44,13 +44,15 @@ model retweet {
 }
 
 model tweets {
-  id         Int      @id @default(autoincrement())
+  id         Int       @id @default(autoincrement())
   user_id    Int
   head       Int
-  body       String   @db.VarChar(140)
-  link       String   @db.VarChar(255)
+  body       String    @db.VarChar(140)
+  link       String    @db.VarChar(255)
   retweet    Int
-  created_at DateTime? @db.Timestamp(0)
+  created_at DateTime? @default(now())
+
+  user users @relation(fields: [user_id], references: [id]) // Relation avec Users
 }
 
 model users {
@@ -65,4 +67,5 @@ model users {
   role        Int?
   modified_at DateTime? @db.Timestamp(0)
   created_at  DateTime? @db.Timestamp(0)
+  tweets      tweets[]
 }

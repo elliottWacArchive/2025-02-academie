@@ -18,6 +18,7 @@
             <div id="searchbar"></div>
             <div id="feed"></div>
             <?php include 'widget/tweet.php' ?>
+            <?php include 'widget/listtweet.php' ?>
         </div>
     </div>
     <div id="ball">
