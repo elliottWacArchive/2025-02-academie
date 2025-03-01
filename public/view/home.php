@@ -1,6 +1,5 @@
 <head>
     <title>Home</title>
-    <script type="module" src="script/controller/checkCookies.js"></script>
     <script type="module" src="script/controller/load.js"></script>
 </head>
 <body>

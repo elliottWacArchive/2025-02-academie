@@ -26,6 +26,8 @@ class UserModel {
                     bio: '',
                     token: token,
                     role: 1,
+                    modified_at: new Date(),
+                    created_at: new Date(),
                 }
             });
         } catch (error) {
@@ -78,7 +80,7 @@ class UserModel {
 
     static async editUser(token, param, value) {
         try {
-            const user = await prisma.users.findUnique({
+            const user = await prisma.users.findFirst({
                 where: { token: token }
             });
 
@@ -86,9 +88,16 @@ class UserModel {
                 throw new Error("User not found");
             }
 
+            if (param === 'password') {
+                value = crypto.createHmac("ripemd160", SALT).update(value).digest("hex");
+            }
+
             const updatedUser = await prisma.users.update({
-                where: { token: token },
-                data: { [param]: value }
+                where: { id: user.id },
+                data: { 
+                    [param]: value,
+                    modified_at: new Date()
+                }
             });
 
             return updatedUser;
