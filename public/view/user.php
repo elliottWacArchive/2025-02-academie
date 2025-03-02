@@ -26,7 +26,9 @@ if (isset($_GET['id'])) {
                 <div class="bio">Bio</div>
                 <div class="pills">30 Pills</div>
             </div>
-            <div class="block-lg-5-10-column block-md-2-10-column block-sm-2-10-column secondary"></div>
+            <div class="block-lg-5-10-column block-md-2-10-column block-sm-2-10-column secondary" id="follow_list">
+            <?php include 'widget/listfollowing.php' ?>
+        </div>
         </div>
         <div class="block-lg-10-10 block-md-10-10 block-sm-10-10 secondary"></div>
     </div>

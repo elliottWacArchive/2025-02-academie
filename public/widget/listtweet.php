@@ -2,23 +2,23 @@
     document.addEventListener('DOMContentLoaded', async () => {
         const response = await fetch('http://localhost:3000/tweets/findTweets');
         const result = await response.json();
-        console.log(result);
+        // console.log(result);
         let tweetContainer = document.getElementById('feed');
         result.user.forEach(element => {
             const formatDate = (dateString) => {
                 const date = new Date(dateString);
                 return date.toLocaleString('fr-FR', {
                     weekday: 'long', day: '2-digit', month: '2-digit', year: 'numeric', hour: '2-digit', minute: '2-digit'
-                }).replace(',', '').replace(' ', '-').replace(':', 'h');
+                }).replace(',', '').replace(' ', ' ').replace(':', 'H').replace(/(\w{3})\w+/, '$1.');
             };
             let tweet = document.createElement('div');
-            tweet.classList.add('block-lg-6-2-column', 'dark', 'center');
+            tweet.classList.add('block-lg-6-2-column', 'block-sm-6-2-column','dark', 'center');
             // <img class="icon" src="http://localhost:3000/storage/pp/${element.user.pp}" alt=""> pour plus tard
             tweet.innerHTML = `
-                    <div class="block-lg-10-2-nopad dark flex-end header">
+                    <div class="block-lg-10-2-nopad block-sm-10-2-nopad dark flex-end header">
                     <div class="small tweets_close">✖️​</div>
                     </div>
-                    <div class="block-lg-10-3-nopad dark center">
+                    <div class="block-lg-10-3-nopad block-sm-10-3-nopad dark center">
                         <div>${element.body}</div>
                     </div>
                     <div class="block-lg-10-3-nopad dark flex-end footer">

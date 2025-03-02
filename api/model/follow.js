@@ -16,7 +16,7 @@ class FollowModel {
     }
 
     static async deleteFollow(followerId, followingId) {
-        return await prisma.follow.deleteMany({
+        return await prisma.follows.deleteMany({
             where: {
                 followerId: followerId,
                 followingId: followingId,
@@ -25,7 +25,7 @@ class FollowModel {
     }
 // 🔹 Voir qui un utilisateur suit :
     static async getFollowers(userId) {
-        return await prisma.follow.findMany({
+        return await prisma.follows.findMany({
             where: {
                 followingId: userId,
             },
@@ -35,7 +35,7 @@ class FollowModel {
         });
     }
     static async getFollowers(userId) {
-        return await prisma.follow.findMany({
+        return await prisma.follows.findMany({
             where: { followingId: userId },
             include: { follower: { select: { id: true, username: true } } }
         });
