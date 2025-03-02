@@ -12,7 +12,7 @@
                 }).replace(',', '').replace(' ', '-').replace(':', 'h');
             };
             let tweet = document.createElement('div');
-            tweet.classList.add('block-lg-6-2-column', 'dark', 'center');
+            tweet.classList.add('block-lg-10-2-column', 'dark', 'center');
             // <img class="icon" src="http://localhost:3000/storage/pp/${element.user.pp}" alt=""> pour plus tard
             tweet.innerHTML = `
                     <div class="block-lg-10-2-nopad dark flex-end header">
