@@ -24,3 +24,4 @@
         <img src="image/image.png" alt="">
     </div>
 </body>
+<script type="module" src="script/controller/follows.js"></script>

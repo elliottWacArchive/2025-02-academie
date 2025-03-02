@@ -3,6 +3,7 @@ const cors = require("cors");
 const { PrismaClient } = require("@prisma/client");
 const userRoutes = require("./routes/userRoutes.js");
 const tweetRoutes = require("./routes/tweetRoutes.js");
+const followRoutes = require("./routes/followRoutes.js");
 const multer = require("multer");
 const prisma = new PrismaClient();
 const app = express();
@@ -23,6 +24,7 @@ app.use(async (err, req, res, next) => {
 // Routes
 app.use("/users", userRoutes);
 app.use("/tweets", tweetRoutes);
+app.use("/follow", followRoutes);
 app.use('/storage', express.static('storage'));
 
 const PORT = 3000;

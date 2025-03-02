@@ -300,3 +300,13 @@ input, .submit-button {
 .small_fol {
     height: 20px;
 }
+.btn_pills {
+    border: none;
+    margin: 0;
+    padding: 0;
+    height: fit-content;
+    background: transparent;
+    /* -webkit-font-smoothing: inherit;
+    -moz-osx-font-smoothing: inherit; */
+    /* -webkit-appearance: none; */
+}

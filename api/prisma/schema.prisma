@@ -14,9 +14,15 @@ model conversation {
 }
 
 model follows {
-  id           Int @id @default(autoincrement())
-  following_id Int
-  followed_id  Int
+  id          Int      @id @default(autoincrement())
+  followerId  Int
+  followingId Int
+  createdAt   DateTime @default(now())
+
+  follower   users @relation("FollowerRelation", fields: [followerId], references: [id])
+  following  users @relation("FollowingRelation", fields: [followingId], references: [id])
+
+  @@unique([followerId, followingId]) // Un utilisateur ne peut pas suivre la même personne 2 fois
 }
 
 model hashtag {
@@ -67,5 +73,8 @@ model users {
   role        Int?
   modified_at DateTime? @db.Timestamp(0)
   created_at  DateTime? @db.Timestamp(0)
+  
   tweets      tweets[]
+  followers   follows[] @relation("FollowerRelation")
+  following   follows[] @relation("FollowingRelation")
 }

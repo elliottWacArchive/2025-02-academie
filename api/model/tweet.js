@@ -41,7 +41,7 @@ class TweetModel {
             return await prisma.tweets.findMany({
                 include: {
                     user: { 
-                        select: { username: true } 
+                        select: { username: true, id: true } 
                     }
                 },
                 orderBy: {

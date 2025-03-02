@@ -47,7 +47,7 @@ let isFrozen = false;
 
 let elementX = window.innerWidth / 1.3;
 let elementY = window.innerHeight / 1.5;
-element.style.left = `${elementX - elementRadius}px`;
+element.setAttribute("draggable", "true");
 element.style.top = `${elementY - elementRadius}px`;
 
 document.addEventListener('mousemove', (event) => {
