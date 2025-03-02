@@ -12,4 +12,4 @@
         </div>
     </div>
 </div>
-<script type="module" src="script/controller/tweet.js"></script>
+<script defer type="module" src="script/controller/tweet.js"></script>

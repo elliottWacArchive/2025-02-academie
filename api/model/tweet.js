@@ -43,6 +43,9 @@ class TweetModel {
                     user: { 
                         select: { username: true } 
                     }
+                },
+                orderBy: {
+                    created_at: 'desc' // Trie du plus récent au plus ancien
                 }
             });
         }

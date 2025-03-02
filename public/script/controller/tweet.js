@@ -3,10 +3,14 @@ import CookieModel from "../model/cookie.js";
 const tweet_container = document.getElementById("tweet-container");
 const tweet_close = document.getElementById("close-tweet");
 const tweet_send = document.getElementById("publish-tweet");
-
+let tweet_button = document.getElementsByClassName("tweets_close");
 tweet_close.addEventListener("click", () => {
     tweet_container.style.display = "none";
 });
+
+console.log(tweet_button.length);
+
+
 
 tweet_send.addEventListener("click", async () => {
     const tweet_text = document.getElementById("text-tweet").innerText;

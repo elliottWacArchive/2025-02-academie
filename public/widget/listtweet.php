@@ -1,22 +1,9 @@
-<!-- <div class="block-lg-10-8-column" id="l"> -->
-
-<style>
-    #list-tweet {
-    min-height: 500px; /* Ajustez selon le besoin */
-    overflow-y: auto;  /* Permet de scroller si besoin */
-    display: flex;
-    flex-direction: column;
-    align-items: flex-start; /* Aligner les tweets en haut */
-}
-</style>
-
     <script>
         document.addEventListener('DOMContentLoaded', async () => {
             const response = await fetch('http://localhost:3000/tweets/findTweets');
             const result = await response.json();
             console.log(result);
             let tweetContainer = document.getElementById('feed');
-            tweetContainer.classList.add('block-lg-10-8-column', 'dark');
             result.user.forEach(element => {
                 const formatDate = (dateString) => {
                     const date = new Date(dateString);
@@ -24,29 +11,35 @@
                         weekday: 'long', day: '2-digit', month: '2-digit', year: 'numeric', hour: '2-digit', minute: '2-digit'
                     }).replace(',', '').replace(' ', '-').replace(':', 'h');
                 };
-                // console.log('element', element);
-                // let tweetContainer = document.getElementById('tweets-container');
                 let tweet = document.createElement('div');
-                tweet.style.minHeight = '100px';
-                tweet.classList.add('block-lg-10-6-column', 'dark');
-
+                tweet.classList.add('block-lg-6-3-column', 'dark', 'center');
+                // <img class="icon" src="http://localhost:3000/storage/pp/${element.user.pp}" alt=""> pour plus tard
                 tweet.innerHTML = `
-                    <div class="block-lg-10-1-nopad dark flex-end header">
-                        <img class="icon" src="image/icon/close.svg" alt="">
+                    <div class="block-lg-10-3-nopad dark flex-end header">
+                    <div class="small tweets_close">✖️​</div>
                     </div>
                     <div class="block-lg-10-4-nopad dark center">
                         <div>${element.body}</div>
                     </div>
-                    <div class="block-lg-10-3 dark">
-                            <div>${element.user.username}</div>
-                            <div>${formatDate(element.created_at)}</div>
+                    <div class="block-lg-10-3-nopad dark flex-end footer">
+                    <div class="block-lg-6-10-nopad dark">
+                            <div class="elem">${element.user.username}</div>
+                            <div class="elem">${formatDate(element.created_at)}</div>
+                    </div>
+                    <div class="block-lg-3-10-nopad dark flex-end">
+                        <div class="small">❤️​</div>
+                        <div class="small">🔁</div>
                     </div>
                 `;
                 tweetContainer.appendChild(tweet);
             });
-
-            // alert(result.message || result.error);
+            document.addEventListener("click", (event) => {
+                if (event.target.classList.contains("tweets_close")) {
+                    event.target.closest(".block-lg-6-3-column").style.display = "none";
+                }
+            });
         });
     </script>
+<script defer type="module" src="../script/controller/tweet.js"></script>
 
 <!-- </div> -->
