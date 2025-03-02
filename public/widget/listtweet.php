@@ -12,13 +12,13 @@
                     }).replace(',', '').replace(' ', '-').replace(':', 'h');
                 };
                 let tweet = document.createElement('div');
-                tweet.classList.add('block-lg-6-3-column', 'dark', 'center');
+                tweet.classList.add('block-lg-6-2-column', 'dark', 'center');
                 // <img class="icon" src="http://localhost:3000/storage/pp/${element.user.pp}" alt=""> pour plus tard
                 tweet.innerHTML = `
-                    <div class="block-lg-10-3-nopad dark flex-end header">
+                    <div class="block-lg-10-2-nopad dark flex-end header">
                     <div class="small tweets_close">✖️​</div>
                     </div>
-                    <div class="block-lg-10-4-nopad dark center">
+                    <div class="block-lg-10-3-nopad dark center">
                         <div>${element.body}</div>
                     </div>
                     <div class="block-lg-10-3-nopad dark flex-end footer">
@@ -29,13 +29,16 @@
                     <div class="block-lg-3-10-nopad dark flex-end">
                         <div class="small">❤️​</div>
                         <div class="small">🔁</div>
+                        <span class="small">💬</span>
+                        <img class="small_fol" src="../image/follow.png" alt="follow">
+                        
                     </div>
                 `;
                 tweetContainer.appendChild(tweet);
             });
             document.addEventListener("click", (event) => {
                 if (event.target.classList.contains("tweets_close")) {
-                    event.target.closest(".block-lg-6-3-column").style.display = "none";
+                    event.target.closest(".block-lg-6-2-column").style.display = "none";
                 }
             });
         });

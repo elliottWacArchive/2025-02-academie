@@ -296,3 +296,7 @@ input, .submit-button {
     align-content: center;
     /* justify-content: center; */
 }
+
+.small_fol {
+    height: 20px;
+}
