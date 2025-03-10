@@ -1,0 +1,52 @@
+.pillz-container {
+    width: calc(100% - 10px);
+    padding: 5px;
+    flex-direction: column;
+    height: fit-content;
+    display: flex;
+    overflow-x: hidden;
+    border-radius: 20px;
+}
+
+.pillz-header {
+    display: flex;
+    justify-content: flex-end;
+    width: 100%;
+    height: 20px;
+}
+
+.pillz-header div {
+    border-radius: 50%;
+    height: 100%;
+    font-size: 0.5rem;
+    aspect-ratio: 1/1;
+}
+
+.pillz-center {
+    display: flex;
+    padding: 20px;
+    width: calc(100% - 40px);
+    min-height: 50px;
+    font-size: 1rem;
+}
+
+.pillz-footer {
+    flex-direction: column;
+    display: flex;
+    width: 100%;
+}
+
+.pillz-information {
+    display: flex;
+    width: 100%;
+    height: 38px;
+    font-size: 0.7rem;
+    justify-content: space-between;
+}
+
+.pillz-reaction {
+    display: flex;
+    width: 100%;
+    align-items: center;
+    height: 38px;
+}

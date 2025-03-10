@@ -1,7 +1,7 @@
 import CookieModel from "../model/cookie.js";
 
 console.log(document.addEventListener("click", event => {
-    console.log(event);
+    // console.log(event);
 }));
 document.addEventListener("click", async (event) => {
     if (event.target.classList.contains("small_fol")) {
