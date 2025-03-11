@@ -1,6 +1,8 @@
 <head>
+    <link rel="stylesheet" href="/css/pillz.css">
     <title>Home</title>
     <script type="module" src="script/controller/load.js"></script>
+    <script defer src='script/controller/ball.js'></script>
 </head>
 <body>
     <div class="main-sm-column main-md-column main-lg dark">
@@ -18,12 +20,12 @@
                 <?php include 'widget/searchbar.php' ?>
             </div>
             <div id="feed"></div>
-            <?php include 'widget/tweet.php' ?>
+            <?php // include 'widget/tweet.php' ?>
             <?php include 'widget/listtweet.php' ?>
         </div>
     </div>
     <div id="ball">
-        <img src="image/image.png" alt="">
+        <img id="pillz-img" src="image/publish-btn.png" alt="">
     </div>
 </body>
 <script type="module" src="script/controller/follows.js"></script>

@@ -12,21 +12,21 @@
                 }).replace(',', '').replace(' ', '-').replace(':', 'h');
             };
             let tweet = document.createElement('div');
-            tweet.classList.add('block-lg-10-2-column', 'dark', 'center');
+            tweet.classList.add('pillz-container', 'dark', 'center');
             // <img class="icon" src="http://localhost:3000/storage/pp/${element.user.pp}" alt=""> pour plus tard
             tweet.innerHTML = `
-                    <div class="block-lg-10-2-nopad dark flex-end header">
-                    <div class="small tweets_close">✖️​</div>
+                    <div class="pillz-header">
+                        <div class="small tweets_close">✖️​</div>
                     </div>
-                    <div class="block-lg-10-3-nopad dark center">
+                    <div class="pillz-center">
                         <div>${element.body}</div>
                     </div>
-                    <div class="block-lg-10-3-nopad dark flex-end footer">
-                    <div class="block-lg-6-10-nopad dark">
+                    <div class="pillz-footer">
+                    <div class="pillz-information">
                             <div class="elem">${element.user.username}</div>
                             <div class="elem">${formatDate(element.created_at)}</div>
                     </div>
-                    <div class="block-lg-3-10-nopad dark flex-end">
+                    <div class="pillz-reaction">
                         <div class="small">❤️​</div>
                         <div class="small">🔁</div>
                         <span class="small">💬</span>
