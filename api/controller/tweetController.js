@@ -20,6 +20,27 @@ const TweetController = {
             res.status(500).json({ error: "Erreur serveur", details: error.message });
             console.log(error);
         }
+    },
+    async getHashtag(req, res) {
+        try {
+            const { hashtag } = req.body;
+            const tags = await tweetModel.getHashtag(hashtag);
+            res.status(201).json({ message: "Hashtag trouvés !", user: tags });
+        } catch (error) {
+            res.status(500).json({ error: "Erreur serveur", details: error.message });
+            console.log(error);
+        }
+    },
+
+    async getAt(req, res) {
+        try {
+            const { at } = req.body;
+            const tags = await tweetModel.getAt(at);
+            res.status(201).json({ message: "At trouvé !", user: tags });
+        } catch (error) {
+            res.status(500).json({ error: "Erreur serveur", details: error.message });
+            console.log(error);
+        }
     }
 }
 

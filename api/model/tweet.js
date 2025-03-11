@@ -54,6 +54,42 @@ class TweetModel {
             throw error;
         }
     }
+    static async getHashtag(val) {
+        try {
+            return await prisma.hashtag.findMany({
+                where: {
+                    name: {
+                        startsWith: val
+                    }
+                },
+                select: {
+                    name: true
+                }
+            });
+        }
+        catch (error) {
+            console.error("Erreur lors de la récupération des tweets : ", error);
+            throw error;
+        }
+    }
+    static async getAt(val) {
+        try {
+            return await prisma.users.findMany({
+                where: {
+                    username: {
+                        startsWith: val
+                    }
+                },
+                select: {
+                    username: true
+                }
+            });
+        }
+        catch (error) {
+            console.error("Erreur lors de la récupération des tweets : ", error);
+            throw error;
+        }
+    }
 }
 
 

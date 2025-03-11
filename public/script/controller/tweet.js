@@ -32,10 +32,10 @@ document.addEventListener('click', function (event) {
 });
 
 function createTweet(element) {
+
     const pillzerContainer = document.createElement('div');
     // pillzerContainer.classList.add('pillz');
     pillzerContainer.id = 'tweet-container';
-
     const header = document.createElement('div');
     header.classList.add('header');
 
@@ -66,6 +66,10 @@ function createTweet(element) {
     footer.appendChild(publishTweet);
     pillzerContainer.appendChild(footer);
     element.appendChild(pillzerContainer);
+
+    const script = document.createElement('script');
+    script.src = '/script/controller/autocomplete.js';
+    pillzerContainer.appendChild(script);
     listenTweet();
 };
 
