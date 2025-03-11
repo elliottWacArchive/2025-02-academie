@@ -137,13 +137,33 @@ class UserModel {
             if (!user) {
                 return {user: false};
             }
-
+            console.log("Profil chargé : ", user);
             return user;
         } catch (error) {
             console.error("Erreur lors du chargement du profil : ", error);
             throw error;
         }
     }
+
+    static async getUserByName(username) {
+        try {
+            const user = await prisma.users.findMany({
+                where: {
+                    username: {
+                        contains: username,
+                    }
+                }
+            });
+            if (user.length === 0) {
+                return {user: false};
+            }
+            return user;
+        } catch (error) {
+            console.error("Erreur lors de la récupération de l'utilisateur : ", error);
+            throw error;
+        }
+    }
+
 }
 
 

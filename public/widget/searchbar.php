@@ -19,6 +19,30 @@
         const searchPills = document.getElementById('search_pills');
         const searchHashtag = document.getElementById('search_hashtag');
         console.log(searchPeople, searchHashtag, searchPills);
+        searchPeople.addEventListener('input', async function(event) {
+            const query = event.target.value;
+            console.log(query);
+            
+            // const results = document.getElementById('results');
+            const response = await fetch('http://localhost:3000/users/getProfile', {
+                    method: 'POST',
+                    headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify({query}),
+        });
+        const result = await response.json();
+        console.log(result);
+        // results.innerHTML = "reslut";
+        
+        // forEach(element => {
+        //     const listItem = document.createElement('li');
+        //     listItem.textContent = element.username;
+        //     results.appendChild(listItem);
+        // });
+    });
+
+        
         
     //     searchPeople.addEventListener('input', function(event) {
     //         const query = event.target.value.toLowerCase();
@@ -29,7 +53,7 @@
     //         const items = ['apple', 'banana', 'cherry', 'date', 'fig', 'grape', 'kiwi'];
 
     //         // const filteredItems = items.filter(item => item.toLowerCase().includes(query));
-    //         const response = await fetch('http://localhost:3000/users/getUser', {
+    //         const response = await fetch('http://localhost:3000/users/getProfile', {
     //         method: 'POST',
     //         headers: {
     //             'Content-Type': 'application/json',
@@ -48,3 +72,4 @@
     // });
 });
 </script>
+<!-- <script defer type="module" src="../script/controller/tweet.js"></script> -->

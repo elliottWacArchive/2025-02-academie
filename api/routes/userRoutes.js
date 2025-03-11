@@ -9,5 +9,6 @@ router.post("/setPp", UserController.uploadMiddleware, UserController.setPp);
 router.post("/isToken", UserController.isToken);
 router.post("/getUser", UserController.getUser);
 router.post("/loadProfile", UserController.loadProfile);
+router.post("/getProfile", UserController.getProfile);
 
 module.exports = router;
