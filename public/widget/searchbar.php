@@ -23,54 +23,26 @@
         searchPeople.addEventListener('input', async function(event) {
             const query = event.target.value;
             console.log(query);
-            const response = await fetch('http://localhost:3000/users/loadProfile', {
+            if (query.length != 0) {
+                const response = await fetch('http://localhost:3000/users/loadProfile', {
                     method: 'POST',
-                    body: query,
-        });
-        const result = await response.json();
-        console.log(result);
-        
-        result.user.forEach(element => {
-            console.log(element.username);
-            
-        });        
-        // results.innerHTML = "reslut";
-    
-        // forEach(result => {
-        //     const listItem = document.createElement('li');
-        //     listItem.textContent = result.user.username;
-        //     results.appendChild(listItem);
-        // });
+                    headers: {
+                        'Content-Type': 'application/json' // Indiquer que c'est du JSON
+                    },
+                    body: JSON.stringify({ name: query }), // Correction : envoyer "name"
+                });
+                const result = await response.json();
+                console.log(result);
+                
+                results.innerHTML = "";
+                result.user.forEach(ele => {
+                    const listItem = document.createElement('li');
+                    listItem.textContent = ele.username;
+                    results.appendChild(listItem);
+                });
+            } else {
+                results.innerHTML = "";
+            }
     });
-
-        
-        
-    //     searchPeople.addEventListener('input', function(event) {
-    //         const query = event.target.value.toLowerCase();
-    //         const results = document.getElementById('results');
-    //         results.innerHTML = '';
-
-    //         // Simulate search results
-    //         const items = ['apple', 'banana', 'cherry', 'date', 'fig', 'grape', 'kiwi'];
-
-    //         // const filteredItems = items.filter(item => item.toLowerCase().includes(query));
-    //         const response = await fetch('http://localhost:3000/users/getProfile', {
-    //         method: 'POST',
-    //         headers: {
-    //             'Content-Type': 'application/json',
-    //         },
-    //         body: JSON.stringify({ token, param: 'username' }),
-    //     });        const result = await response.json();
-    //     console.log(result);
-    //     let tweetContainer = document.getElementById('feed');
-    //     result.user.forEach(element => {
-    //         filteredItems.forEach(item => {
-    //             const listItem = document.createElement('li');
-    //             listItem.textContent = item;
-    //             results.appendChild(listItem);
-    //         });
-    //     });
-    // });
 });
 </script>
-<!-- <script defer type="module" src="../script/controller/tweet.js"></script> -->

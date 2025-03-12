@@ -145,19 +145,16 @@ class UserModel {
         }
     }
 
-    static async getUserByName(username) {
+    static async getUserByName(usernam) {
+        console.log(usernam);
         try {
-            const user = await prisma.users.findMany({
+            return await prisma.users.findMany({
                 where: {
                     username: {
-                        contains: username,
+                        startsWith: usernam,
                     }
                 }
             });
-            if (user.length === 0) {
-                return {user: false};
-            }
-            return user;
         } catch (error) {
             console.error("Erreur lors de la récupération de l'utilisateur : ", error);
             throw error;
