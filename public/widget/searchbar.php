@@ -19,25 +19,25 @@
         const searchPills = document.getElementById('search_pills');
         const searchHashtag = document.getElementById('search_hashtag');
         const results = document.getElementById('results');
-        // console.log(searchPeople, searchHashtag, searchPills);
         searchPeople.addEventListener('input', async function(event) {
+            // C4EST ICI QUE JE RECHERCHE DANS LES RENES
+            // KESKIA MAINTENANTS ?
             const query = event.target.value;
             console.log(query);
             if (query.length != 0) {
                 const response = await fetch('http://localhost:3000/users/loadProfile', {
                     method: 'POST',
                     headers: {
-                        'Content-Type': 'application/json' // Indiquer que c'est du JSON
+                        'Content-Type': 'application/json'
                     },
-                    body: JSON.stringify({ name: query }), // Correction : envoyer "name"
+                    body: JSON.stringify({ name: query }),
                 });
-                const result = await response.json();
-                console.log(result);
-                
+                const results = await response.json();
+                console.log(results);
                 results.innerHTML = "";
-                result.user.forEach(ele => {
+                results.user.forEach(element => {
                     const listItem = document.createElement('li');
-                    listItem.textContent = ele.username;
+                    listItem.textContent = element.username;
                     results.appendChild(listItem);
                 });
             } else {

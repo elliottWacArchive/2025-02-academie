@@ -83,18 +83,17 @@ const UserController = {
     async loadProfiles(req, res) {
         try {
             console.log(req.body); 
-            const {name} = req.body;
-            console.log(name);
-            const users = await UserModel.getUserByName(name);
+            const { requet } = req.body;
+            const users = await UserModel.getUserByNames(requet);
             if (!users || users.length === 0) {
-                return res.status(404).json({ error: "Utilisateur non trouvé." });
+                return res.status(404).json({ error: "Utilisateurs non trouvé." });
             } else {
-                res.status(200).json({ message: `Profils Trouvés ! avec ${name}`, user : users });
+                res.status(200).json({ message: `Profils Trouvés ! avec ${users}`, user : users });
             }
         } catch (error) {
-            res.status(500).json({ error: "Erreur serveur", details: error.message });
-        }
-    },
+                res.status(500).json({ error: "Erreur serveur", details: error.message });
+            }
+        },
 
     async getProfile(req, res) {
         try {
