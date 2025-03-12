@@ -22,18 +22,22 @@
         // console.log(searchPeople, searchHashtag, searchPills);
         searchPeople.addEventListener('input', async function(event) {
             const query = event.target.value;
-            console.log(query);
+            const test = (JSON.stringify({ query }));
+            console.log(test);
             const response = await fetch('http://localhost:3000/users/loadProfile', {
                     method: 'POST',
-                    body: query,
+                    headers: {
+                    "Content-Type": "application/json",
+                },
+                body: test,
         });
         const result = await response.json();
         console.log(result);
         
-        result.user.forEach(element => {
-            console.log(element.username);
+        // result.user.forEach(element => {
+        //     console.log(element.username);
             
-        });        
+        // });        
         // results.innerHTML = "reslut";
     
         // forEach(result => {
