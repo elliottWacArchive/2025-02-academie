@@ -18,26 +18,27 @@
         const searchPeople = document.getElementById('search_people');
         const searchPills = document.getElementById('search_pills');
         const searchHashtag = document.getElementById('search_hashtag');
-        console.log(searchPeople, searchHashtag, searchPills);
+        const results = document.getElementById('results');
+        // console.log(searchPeople, searchHashtag, searchPills);
         searchPeople.addEventListener('input', async function(event) {
             const query = event.target.value;
             console.log(query);
-            
-            // const results = document.getElementById('results');
-            const response = await fetch('http://localhost:3000/users/getProfile', {
+            const response = await fetch('http://localhost:3000/users/loadProfile', {
                     method: 'POST',
-                    headers: {
-                'Content-Type': 'application/json',
-            },
-            body: JSON.stringify({query}),
+                    body: query,
         });
         const result = await response.json();
         console.log(result);
-        // results.innerHTML = "reslut";
         
-        // forEach(element => {
+        result.user.forEach(element => {
+            console.log(element.username);
+            
+        });        
+        // results.innerHTML = "reslut";
+    
+        // forEach(result => {
         //     const listItem = document.createElement('li');
-        //     listItem.textContent = element.username;
+        //     listItem.textContent = result.user.username;
         //     results.appendChild(listItem);
         // });
     });
