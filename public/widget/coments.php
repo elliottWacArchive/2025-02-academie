@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+    <style>
+        @import 'https://fonts.googleapis.com/css?family=Lato:300,400,700';
+html, body {
+  width: 100%;
+  height: 100%;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  display: grid;
+  align-items: center;
+  justify-items: center;
+  background: #1D1F20;
+  color: white;
+  font-size: 14px;
+  font-family: Lato, sans-serif;
+}
+
+img {
+  width: 100%;
+}
+
+.app {
+  height: 90vmin;
+  width: 90vmin;
+  background: white;
+  position: relative;
+  overflow: auto;
+
+  /* Hide the app on load */
+  visibility: hidden;
+}
+
+.gallery {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 2% 3.6%;
+  padding: 10px;
+}
+
+.item {
+  cursor: pointer;
+  font-size: 0;
+}
+
+
+
+.detail {
+  position: fixed;
+  top: 10px;
+  left: 50%;
+  width: 90.1vmin;
+  cursor: pointer;
+  font-size: 0;
+  display: flex;
+  flex-direction: column;
+  visibility: hidden;
+  max-height: 100%;
+  overflow: auto;
+}
+
+.detail > img {
+  position: relative;
+  z-index: 1;
+}
+
+.detail .content {
+  background: #232323;
+  padding: 2rem 1.5rem;
+  font-size: 1rem;
+  box-sizing: border-box;
+  flex-grow: 1;
+}
+
+.detail .content > * {
+  margin-bottom: 1rem;
+}
+
+.detail .title {
+  font-size: 2rem;
+  text-transform: uppercase;
+}
+
+.detail .secondary {
+  color: lightgray;
+}
+
+.detail .description {
+  line-height: 1.5;
+}
+    </style>
+<div class="item" data-title="Owl" data-secondary="Hoo are you?" data-text="Owel lorem ipsum dolor sit amet, consectetur adipisicing elit. Iure cum, est amet delectus, blanditiis voluptatem laborum pariatur consequatur quae voluptate, nisi. Laborum adipisci iste earum distinctio, fugit, quas ipsa impedit.">
+      <img src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/181794/kl-owl.png" alt="" />
+    </div>
+</html>

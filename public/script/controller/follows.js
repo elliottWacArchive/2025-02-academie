@@ -5,8 +5,8 @@ console.log(document.addEventListener("click", event => {
 }));
 document.addEventListener("click", async (event) => {
     if (event.target.classList.contains("small_fol")) {
-        // console.log("oui c'bon");
         let follow_id = parseInt(event.target.parentElement.value);
+        console.log(follow_id);
         // console.log(event.target.parentElement);
         const token = CookieModel.getCookie("token");
         const follower_Id = await fetch('http://localhost:3000/users/getUser', {

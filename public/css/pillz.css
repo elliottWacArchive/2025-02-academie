@@ -1,11 +1,12 @@
 .pillz-container {
-    width: calc(100% - 10px);
+    /* width: calc(100% - 10px); */
     padding: 5px;
     flex-direction: column;
     height: fit-content;
     display: flex;
     overflow-x: hidden;
     border-radius: 20px;
+    z-index: auto;
 }
 
 .pillz-header {

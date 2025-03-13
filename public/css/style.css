@@ -286,10 +286,16 @@ input, .submit-button {
 }
 
 /* CODE FIRE_69 */
+
+.comment-container {
+    position: relative;
+    top: -75px;
+    z-index: auto;
+}
 #feed {
     display: flex;
     flex-direction: column;
-    gap: 5px;
+    gap: 45px;
     justify-content: center;
     align-items: center;
 }
@@ -315,7 +321,7 @@ input, .submit-button {
 }
 
 .small_fol {
-    height: 20px;
+    height: 43px;
 }
 .btn_pills {
     border: none;
@@ -327,6 +333,8 @@ input, .submit-button {
     -moz-osx-font-smoothing: inherit; */
     /* -webkit-appearance: none; */
 }
+
+/* FIN FIRE 69 */
 
 /* Custom scrollbar styles */
 ::-webkit-scrollbar {

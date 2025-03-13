@@ -3,6 +3,7 @@
     <title>Home</title>
     <script type="module" src="script/controller/load.js"></script>
     <script defer src='script/controller/ball.js'></script>
+    <script defer src='script/controller/comments.js'></script>
 </head>
 <body>
     <div class="main-sm-column main-md-column main-lg dark">
@@ -16,7 +17,9 @@
             <div class="block-lg-10-7 block-md-7-10 block-sm-7-10 dark"></div>
         </div>
         <div class="block-lg-8-10-column block-md-10-8-column block-sm-10-8-column secondary">
-            <!-- <div id="searchbar"></div> -->
+            <div id="searchbar">
+                <?php include 'widget/searchbar.php' ?>
+            </div>
             <div id="feed"></div>
             <?php // include 'widget/tweet.php' ?>
             <?php include 'widget/listtweet.php' ?>
