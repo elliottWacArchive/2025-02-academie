@@ -18,7 +18,7 @@
         const searchPeople = document.getElementById('search_people');
         const searchPills = document.getElementById('search_pills');
         const searchHashtag = document.getElementById('search_hashtag');
-        const results = document.getElementById('results');
+        const list_result = document.getElementById('results');
         searchPeople.addEventListener('input', async function(event) {
             // C4EST ICI QUE JE RECHERCHE DANS LES RENES
             // KESKIA MAINTENANTS ?
@@ -28,21 +28,20 @@
                 const response = await fetch('http://localhost:3000/users/loadProfile', {
                     method: 'POST',
                     headers: {
-                        'Content-Type': 'application/json' // Indiquer que c'est du JSON
+                        'Content-Type': 'application/json'
                     },
                     body: JSON.stringify({ name: query }),
                 });
-                const result = await response.json();
-                console.log(result);
-                
-                results.innerHTML = "";
-                result.user.forEach(ele => {
+                const results = await response.json();
+                console.log(results);
+                list_result.innerHTML = "";
+                results.user.forEach(element => {
                     const listItem = document.createElement('li');
-                    listItem.textContent = ele.username;
-                    results.appendChild(listItem);
+                    listItem.textContent = element.username;
+                    list_result.appendChild(listItem);
                 });
             } else {
-                results.innerHTML = "";
+                list_result.innerHTML = "";
             }
     });
 });

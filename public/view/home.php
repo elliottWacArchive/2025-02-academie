@@ -16,7 +16,8 @@
             </div>
             <div class="block-lg-10-7 block-md-7-10 block-sm-7-10 dark"></div>
         </div>
-        <div class="block-lg-8-10-column block-md-10-8-column block-sm-10-8-column secondary">
+        <!-- <div class="block-lg-8-10-column block-md-10-8-column block-sm-10-8-column secondary"> -->
+        <div class="block-lg-8-10-column block-md-10-8 block-sm-10-8 secondary">
             <div id="searchbar">
                 <?php include 'widget/searchbar.php' ?>
             </div>
