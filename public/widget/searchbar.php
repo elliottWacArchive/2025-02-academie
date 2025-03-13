@@ -18,7 +18,7 @@
         const searchPeople = document.getElementById('search_people');
         const searchPills = document.getElementById('search_pills');
         const searchHashtag = document.getElementById('search_hashtag');
-        const results = document.getElementById('results');
+        const list_result = document.getElementById('results');
         searchPeople.addEventListener('input', async function(event) {
             // C4EST ICI QUE JE RECHERCHE DANS LES RENES
             // KESKIA MAINTENANTS ?
@@ -34,14 +34,14 @@
                 });
                 const results = await response.json();
                 console.log(results);
-                results.innerHTML = "";
+                list_result.innerHTML = "";
                 results.user.forEach(element => {
                     const listItem = document.createElement('li');
                     listItem.textContent = element.username;
-                    results.appendChild(listItem);
+                    list_result.appendChild(listItem);
                 });
             } else {
-                results.innerHTML = "";
+                list_result.innerHTML = "";
             }
     });
 });
