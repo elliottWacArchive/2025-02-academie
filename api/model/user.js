@@ -145,13 +145,12 @@ class UserModel {
         }
     }
 
-    static async getUserByName(usernam) {
-        console.log(usernam);
+    static async getUserByNames(usernam) {
         try {
             return await prisma.users.findMany({
                 where: {
                     username: {
-                        startsWith: usernam,
+                        contains: usernam,
                     }
                 }
             });

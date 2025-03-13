@@ -82,8 +82,8 @@ const UserController = {
 
     async loadProfiles(req, res) {
         try {
-            console.log(req.body); 
-            const { requet } = req.body;
+            console.log(req.body);             
+            const requet  = req.body.name;
             const users = await UserModel.getUserByNames(requet);
             if (!users || users.length === 0) {
                 return res.status(404).json({ error: "Utilisateurs non trouvé." });
