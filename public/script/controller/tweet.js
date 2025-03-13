@@ -27,6 +27,9 @@ document.addEventListener('click', function (event) {
         const image = document.createElement('img');
         image.src = 'image/publish-btn.png';
         image.id = 'pillz-img';
+        if (document.getElementById('autocomplete-suggestions')) {
+            document.getElementById('autocomplete-suggestions').remove();
+        }
         element.appendChild(image);
     }
 });
