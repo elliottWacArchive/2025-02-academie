@@ -13,7 +13,9 @@
                     <div class="username"></div>
                 </div>
             </div>
-            <div class="block-lg-10-7 block-md-7-10 block-sm-7-10 dark"></div>
+            <div class="block-lg-10-7 block-md-7-10 block-sm-7-10 dark">
+                <?php include 'widget/nav.php' ?>
+            </div>
         </div>
         <div class="block-lg-8-10-column block-md-10-8-column block-sm-10-8-column secondary">
             <!-- <div id="searchbar"></div> -->
