@@ -8,9 +8,13 @@
     <link rel="stylesheet" href="/css/digestion/digestion.css">
     <link rel="stylesheet" href="/css/style.css">
     <link rel="stylesheet" href="/css/fonts.css">
+    <link rel="stylesheet" href="/css/dark-theme.css">
     <link rel="icon" href="/image/logo.png" type="image/x-icon">
     <script type="module" src="/script/controller/checkCookies.js"></script>
-    <!--
+    <script type="module">
+        import { changeTheme } from '/script/controller/changeTheme.js';
+        window.changeTheme = changeTheme;
+    </script>    <!--
     Ici doivent être ajouté les script / style génériques.
     Si un script est utilisé sur toutes les view (ex. Cookie car la gestion des cookies est necessaire partout),
     alors il doit être intégré ici!

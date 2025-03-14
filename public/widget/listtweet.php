@@ -12,7 +12,7 @@
                 }).replace(',', '').replace(' ', '-').replace(':', 'h');
             };
             let tweet = document.createElement('div');
-            tweet.classList.add('pillz-container', 'dark', 'center');
+            tweet.classList.add('pillz-container', 'colored', 'center');
             // <img class="icon" src="http://localhost:3000/storage/pp/${element.user.pp}" alt=""> pour plus tard
             tweet.innerHTML = `
                     <div class="pillz-header">
