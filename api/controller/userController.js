@@ -80,10 +80,25 @@ const UserController = {
         }
     },
 
-    async loadProfile(req, res) {
+    async loadProfiles(req, res) {
         try {
-            const { id } = req.body;
-            const user = await UserModel.loadProfile(id);
+            console.log(req.body);             
+            const requet  = req.body.name;
+            const users = await UserModel.getUserByNames(requet);
+            if (!users || users.length === 0) {
+                return res.status(404).json({ error: "Utilisateurs non trouvé." });
+            } else {
+                res.status(200).json({ message: `Profils Trouvés ! avec ${users}`, user : users });
+            }
+        } catch (error) {
+                res.status(500).json({ error: "Erreur serveur", details: error.message });
+            }
+        },
+
+    async getProfile(req, res) {
+        try {
+            const { token } = req.body;
+            const user = await UserModel.getUser(token, "id");
             if (!user) {
                 return res.status(404).json({ error: "Utilisateur non trouvé." });
             } else {
