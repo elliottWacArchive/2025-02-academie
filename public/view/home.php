@@ -17,7 +17,7 @@
                 <?php include 'widget/nav.php' ?>
             </div>
         </div>
-        <div class="block-lg-8-10-column block-md-10-8-column block-sm-10-8-column secondary">
+        <div class="block-lg-8-10-column block-md-10-8-column block-sm-10-8-column colored-secondary">
             <!-- <div id="searchbar"></div> -->
             <div id="feed"></div>
             <?php // include 'widget/tweet.php' ?>
