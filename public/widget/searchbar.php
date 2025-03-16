@@ -25,7 +25,7 @@
             const query = event.target.value;
             console.log(query);
             if (query.length != 0) {
-                const response = await fetch('http://localhost:3000/users/loadProfile', {
+                const response = await fetch('http://localhost:3000/users/loadProfiles', {
                     method: 'POST',
                     headers: {
                         'Content-Type': 'application/json'
