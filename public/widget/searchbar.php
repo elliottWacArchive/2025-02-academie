@@ -8,7 +8,7 @@
         searchBar.style.flexDirection = 'column';
         searchBar.innerHTML = `
             <h2>What are you looking for ?</h2>
-            <div class="block-lg-10-10 center dark">
+            <div class="block-lg-10-10 center colored">
             <input style="width:30%" type="text" id="search_people" placeholder="Search people">
             <input style="width:30%" type="text" id="search_pills" placeholder="Search pills">
             <input style="width:30%" type="text" id="search_hashtag" placeholder="Search #">

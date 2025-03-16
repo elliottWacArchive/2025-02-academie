@@ -19,6 +19,9 @@
         </div>
         <div class="block-lg-8-10-column block-md-10-8-column block-sm-10-8-column colored-secondary">
             <!-- <div id="searchbar"></div> -->
+            <div id="searchbar">
+                <?php include 'widget/searchbar.php' ?>
+            </div>
             <div id="feed"></div>
             <?php // include 'widget/tweet.php' ?>
             <?php include 'widget/listtweet.php' ?>
