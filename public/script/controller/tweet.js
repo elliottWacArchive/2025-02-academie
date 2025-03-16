@@ -27,15 +27,18 @@ document.addEventListener('click', function (event) {
         const image = document.createElement('img');
         image.src = 'image/publish-btn.png';
         image.id = 'pillz-img';
+        if (document.getElementById('autocomplete-suggestions')) {
+            document.getElementById('autocomplete-suggestions').remove();
+        }
         element.appendChild(image);
     }
 });
 
 function createTweet(element) {
+
     const pillzerContainer = document.createElement('div');
     // pillzerContainer.classList.add('pillz');
     pillzerContainer.id = 'tweet-container';
-
     const header = document.createElement('div');
     header.classList.add('header');
 
@@ -66,6 +69,10 @@ function createTweet(element) {
     footer.appendChild(publishTweet);
     pillzerContainer.appendChild(footer);
     element.appendChild(pillzerContainer);
+
+    const script = document.createElement('script');
+    script.src = '/script/controller/autocomplete.js';
+    pillzerContainer.appendChild(script);
     listenTweet();
 };
 
