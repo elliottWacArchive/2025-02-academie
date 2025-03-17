@@ -20,10 +20,12 @@ async function getFollowers(id) {
 function getRandomPosition(container, ballSize) {
     let containerRect = container.getBoundingClientRect();
     console.log(containerRect);
-    
-    let A = {x:containerRect.x, y:containerRect.y};
-    let B = {x:containerRect.x, y:containerRect.y - containerRect.height};
-    let C = {x:containerRect.x + containerRect.width, y:containerRect.y + containerRect.height};
+    let A = {x:0, y:0};
+    let B = {x:0, y:containerRect.height};
+    let C = {x:containerRect.width - ballSize, y:containerRect.height - ballSize * 2};
+    // let A = {x:0, y:0};
+    // let B = {x:containerRect.left, y:containerRect.top + containerRect.height};
+    // let C = {x:containerRect.left + containerRect.width, y:containerRect.top + containerRect.height};
    console.log(A);
     console.log(B);
     console.log(C);
@@ -40,8 +42,11 @@ function getRandomPosition(container, ballSize) {
             r1 = 1 - r1;
             r2 = 1 - r2;
         }
-        let randomX = containerRect.width * r1;
-        let randomY = containerRect.height * r2;
+        let randomX = A.x + r1 * (B.x - A.x) + r2 * (C.x - A.x);
+        let randomY = A.y + r1 * (B.y - A.y) + r2 * (C.y - A.y);
+        // let randomX = containerRect.width * r1;
+        // let randomX = A.x * r1 + B.x * r2 + C.x * r1; 
+        // let randomY = containerRect.height * r2;
         // let randomX = A.x + r1 * (B.x - A.x) + r2 * (C.x - A.x);
         // let randomY = A.y + r1 * (B.y - A.y) + r2 * (C.y - A.y);
 
@@ -62,6 +67,42 @@ function getRandomPosition(container, ballSize) {
     }
     return null; // Aucun espace trouvé
 }
+
+function createArea(container) {
+    let containerRect = container.getBoundingClientRect();
+    let follower = document.createElement('div');
+    follower.id = 'follower';
+    follower.className += 'block-md-2-10-column';
+    // follower.style.width = '100%';
+    // follower.style.height = '100%';
+    follower.style.position = 'fixed';
+    let canvas = document.createElement('canvas');
+    canvas.style.position = 'fixed';
+    if (!canvas.getContext) {
+        alert("Canvas non supporté !");
+        return;
+    } else {
+        let ctx = canvas.getContext('2d');
+        console.log(containerRect);
+        
+        var sWidth = containerRect.width;
+        console.log(sWidth);
+        
+        var sHeight = containerRect.height;
+        console.log(sHeight);
+        var path=new Path2D();
+        path.moveTo(0,0);
+        path.lineTo(sWidth/2, sHeight/2);
+        path.lineTo(sWidth,sHeight);
+        path.lineTo(sWidth*2, sHeight*2);
+        ctx.strokeStyle = "rgb(0 0 255 / 0.5)";
+        ctx.stroke(path);
+        ctx.closePath();
+        follower.appendChild(canvas);
+        container.appendChild(follower);
+    }
+}
+
 function createFollowerDivs(followers) {
     let fol_section = document.getElementsByClassName('follow')[0];
     console.log(fol_section);
@@ -94,6 +135,7 @@ function createFollowerDivs(followers) {
         followerDiv.appendChild(followerId);
         // followerDiv.style.display = 'relative';
         // followerDiv.style.transform = 'translateX(50)';
+        createArea(fol_section);
         fol_section.appendChild(followerDiv);
     });
 }
