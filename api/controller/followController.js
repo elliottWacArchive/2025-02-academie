@@ -21,10 +21,11 @@ const FollowController = {
             console.log(error);
         }
     },
-    async getFollowers(req, res) {
+    async getFollowers(req, res) {        
         try {
             const { userId } = req.body;
-            const followers = await FollowModel.getFollowers(userId);
+            const requet = req.body.id;
+            const followers = await FollowModel.getFollowers(requet);
             res.status(201).json({ message: "Followers trouvés !", followers: followers });
         } catch (error) {
             res.status(500).json({ error: "Erreur serveur", details: error.message });

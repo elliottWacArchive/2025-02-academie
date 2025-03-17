@@ -160,7 +160,21 @@ class UserModel {
         }
     }
 
-}
+    static async getFollowers(id) {
+        try {
+            const follows = await prisma.follows.findFirst({
+                where: { id: id }
+            });
 
+            if (!follows) {
+                throw new Error("Utilisateur non trouvé");
+            }
+            return follows;
+        } catch (error) {
+            console.error("Erreur lors de la récupération des followers : ", error);
+            throw error;
+        }
+    }
+}
 
 module.exports = UserModel;

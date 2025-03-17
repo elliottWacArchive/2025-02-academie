@@ -1,8 +1,107 @@
-import CookieModel from "../model/cookie.js";
+
+async function getFollowers(id) {
+    console.log(id);
+    
+    const response = await fetch('http://localhost:3000/follow/getFollowers', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({id}),
+    });
+    const result = await response.json();
+    console.log(result);
+
+    createFollowerDivs(result.followers);
+    // CREATION ELEMESNT
+    
+}
+
+function getRandomPosition(container, ballSize) {
+    let containerRect = container.getBoundingClientRect();
+    console.log(containerRect);
+    
+    let A = {x:containerRect.x, y:containerRect.y};
+    let B = {x:containerRect.x, y:containerRect.y - containerRect.height};
+    let C = {x:containerRect.x + containerRect.width, y:containerRect.y + containerRect.height};
+   console.log(A);
+    console.log(B);
+    console.log(C);
+   
+    let balls = document.querySelectorAll(".ball");
+    let maxAttempts = 100; // Pour éviter une boucle infinie
+
+    for (let i = 0; i < maxAttempts; i++) {
+        // Génération d'un point aléatoire dans le triangle (coordonnées barycentriques)
+        let r1 = Math.random();
+        let r2 = Math.random();
+
+        if (r1 + r2 > 1) {
+            r1 = 1 - r1;
+            r2 = 1 - r2;
+        }
+        let randomX = containerRect.width * r1;
+        let randomY = containerRect.height * r2;
+        // let randomX = A.x + r1 * (B.x - A.x) + r2 * (C.x - A.x);
+        // let randomY = A.y + r1 * (B.y - A.y) + r2 * (C.y - A.y);
+
+        let overlap = false;
+        balls.forEach(ball => {
+            let rect = ball.getBoundingClientRect();
+            if (
+                randomX < rect.right - containerRect.left &&
+                randomX + ballSize > rect.left - containerRect.left &&
+                randomY < rect.bottom - containerRect.top &&
+                randomY + ballSize > rect.top - containerRect.top
+            ) {
+                overlap = true;
+            }
+        });
+
+        if (!overlap) return { x: randomX, y: randomY };
+    }
+    return null; // Aucun espace trouvé
+}
+function createFollowerDivs(followers) {
+    let fol_section = document.getElementsByClassName('follow')[0];
+    console.log(fol_section);
+    let rect = fol_section.getBoundingClientRect();
+    console.log(rect);
+    
+    
+
+    // RETURN LISTNODE -> ELELS
+    followers.forEach(follower => {
+        const followerDiv = document.createElement('div');
+        const followerId = document.createElement('div');
+        const ballSize = 45;
+        let position = getRandomPosition(fol_section, ballSize);
+
+        if (!position) {
+            alert("Plus d'espace disponible !");
+            return;
+        }
+        followerDiv.style.position = 'relative';
+        followerDiv.style.width = ballSize + "px";
+        followerDiv.style.height = ballSize + "px";
+        followerDiv.style.left = position.x + "px";
+        followerDiv.style.top = position.y + "px";
+        followerDiv.className = 'follower';
+        followerDiv.className = 'ball';
+
+
+        followerId.innerText = follower.following.username;
+        followerDiv.appendChild(followerId);
+        // followerDiv.style.display = 'relative';
+        // followerDiv.style.transform = 'translateX(50)';
+        fol_section.appendChild(followerDiv);
+    });
+}
 
 console.log(document.addEventListener("click", event => {
-    // console.log(event);
+    console.log(CookieModel.getCookie("token"));
 }));
+
 document.addEventListener("click", async (event) => {
     if (event.target.classList.contains("small_fol")) {
         // console.log("oui c'bon");
@@ -29,5 +128,6 @@ document.addEventListener("click", async (event) => {
         const result = await response.json();
         alert(result.message || result.error);
         // event.target.closest(".block-lg-6-2-column").style.display = "none";
-    }
+    };
+
 });

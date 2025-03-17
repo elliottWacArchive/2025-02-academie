@@ -1,12 +1,39 @@
-<head>
+    <head>
 <script src="/script/controller/profile.js"></script>
+<script src="/script/controller/follows.js"></script>
 
 <?php
 if (isset($_GET['id'])) {
     $id = $_GET['id'];
-    echo "<script>loadProfile(" . $_GET['id'] . ");</script>";
+    echo "<script>
+            loadProfile(" . $_GET['id'] . ");
+            getFollowers(" . $_GET['id'] . ");
+        </script>";
+
 }
 ?>
+
+<style>
+    .ball::before {
+
+    }
+    .ball {
+        position: relative;
+        overflow: hidden;
+        background:url("/image/image.png") no-repeat;
+        background-image: circle(50%);
+        background-size: contain;
+        display: flex;
+        justify-content: center;
+        rotate: -31deg;
+    }
+    .ball > div {
+        position: relative;
+        text-align: center;
+        transform: translateY(20px);
+        rotate: 31deg;
+    }
+</style>
 </head>
 <body>
 <div class="main-sm-column main-md-column main-lg colored">
@@ -26,7 +53,7 @@ if (isset($_GET['id'])) {
                 <div class="bio">Bio</div>
                 <div class="pills">30 Pills</div>
             </div>
-            <div class="block-lg-5-10-column block-md-2-10-column block-sm-2-10-column colored-secondary"></div>
+            <div class="block-lg-5-10-column block-md-2-10-column block-sm-2-10-column colored-secondary follow"></div>
         </div>
         <div class="block-lg-10-10 block-md-10-10 block-sm-10-10 colored-secondary"></div>
     </div>
